@@ -21,17 +21,42 @@
 # 
 # 2. Scan the array to compare each day with the median and only pick days where the stock is lower than the median
 # 3. iterate i
-# 4.
 # 
-def median (array)
-   return nil if array.empty?
-   sorted = array.sort
-   len = sorted.length
-   (sorted [(len - 1) / 2] + sorted[len / 2]) / 2
+# 
+# def median (array)
+#    return nil if array.empty?
+#    sorted = array.sort
+#    len = sorted.length
+#    (sorted [(len - 1) / 2] + sorted[len / 2]) / 2
  
-end
+# end
 
-stocks = [17,3,6,9,15,8,6,1,10]
+# Normal Array
+stocks = [17,3,6,9,15,8,6,1,10] 
+
+#Edge Cases
+
+#Dosn't use day 0 to sell when it's the first day
+#stocks = [50, 1, 2, 3, 4]
+
+#lowest price is the last day
+#stocks = [10, 8, 6, 4, 2]
+#
+
+#highest day is day 0 
+#stocks = [100, 1, 2, 3, 4]
+
+# 2 day array 
+#stocks = [1, 10]
+#
+
+# prices go up everyday 
+# stocks =  [1, 2, 3, 4, 5]
+# 
+
+#prices that go down everyday
+#stocks = [5, 4, 3, 2, 1]
+
 
 def stock_picker (array)
   best_profit = 0
@@ -46,16 +71,12 @@ def stock_picker (array)
       
       if current_profit > best_profit
         best_profit = current_profit
-        best_days.push(buy_day , sell_day)  
+        best_days = [buy_day,sell_day]  
       end
     end
   end
   puts "For a profit of $ #{best_profit} the best days to buy and then sell are:"
-  best_days[-2..-1] 
+  p best_days 
 end 
 
 stock_picker(stocks)
-
-# I'm thinking of iterating on the array to creating a hash that holds uses the index to see which Day [Keys] it is and will hold the stock price on the value of that key.
-# 
-
